@@ -1,4 +1,5 @@
-# This code is for the work of [AutoTCL](https://github.com/AI4TS/AI4TS.github.io/blob/main/CameraReadys%201-22%202/19%5CAI4TSAutoTCL%20(3).pdf)
+# This code is for the work of [AutoTCL](https://github.com/AI4TS/AI4TS.github.io/blob/main/CameraReadys%201-22%202/19%5CAI4TSAutoTCL%20(3).pdf) and PARAMETRIC AUGMENTATION FOR TIME SERIES CON-
+TRASTIVE LEARNING
 <p align="center">
 <img src="./figures/archect_1_.png" width = "700" alt="" align=center />
 <br><br>
