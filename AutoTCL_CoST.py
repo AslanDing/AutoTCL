@@ -28,6 +28,7 @@ class AutoTCL:
         max_train_length=None,
         augmask_mode = 'binomial',
         eval_every_epoch = 20,
+        eval_start_epoch = 20,
         aug_net_training = 'PRI',
         gamma_zeta = 0.05,
         hard_mask = True,
@@ -82,6 +83,7 @@ class AutoTCL:
         self.CE = torch.nn.CrossEntropyLoss()
         self.BCE = torch.nn.BCEWithLogitsLoss()
         self.eval_every_epoch = eval_every_epoch
+        self.eval_start_epoch = eval_start_epoch
 
         # self.mmd_loss = MMDLoss()
 
@@ -165,7 +167,7 @@ class AutoTCL:
         right = select0 + 1
         select1 = torch.randint(1,T-2,[B,])
         #select1 = torch.randint(1,T-1,B)
-        mask = torch.where((select1-select0)>1,torch.zeros_like(select1),torch.ones_like(select0)).to(weight.device)
+        mask = torch.where((select1-select0)>1,torch.ones_like(select1),torch.zeros_like(select0)).to(weight.device)
 
         # near difference
         diff = mask.reshape(1,B,1)*torch.abs(weight[:,select0,:]-weight[:,select1,:]) + \
@@ -215,7 +217,7 @@ class AutoTCL:
             # meta_epoch=2,meta_beta=1.0,verbose=False,beta=1.0,
             ratio_step=1,lcoal_weight=0.1,reg_weight = 0.001,
             regular_weight = 0.001,evalall =  False):
-        ''' Training the InfoTS model.
+        '''
         
         Args:
             train_data (numpy.ndarray): The training data. It should have a shape of (n_instance, n_timestamps, n_features). All missing data should be set to NaN.
@@ -304,9 +306,12 @@ class AutoTCL:
                 mae = sum([res[t]['norm']['MAE'] for t in res]) / len(res)
                 mses.append(mse)
                 maes.append(mae)
+                for key in eval_res['ours']:
+                    print(key,eval_res['ours'][key])
+                print("avg.", mse, mae)
+                print("avg. total", mse + mae)
 
-                print(mse + mae)
-                print(eval_res['ours'])
+
 
         while True:
             if n_epochs is not None and self.n_epochs >= n_epochs:
@@ -341,7 +346,7 @@ class AutoTCL:
                         aloss = vx_distance + reg_weight * reg_loss + regular_weight * regular
                         aloss.backward()
                         meta_optimizer.step()
-                        print("PRI aug loss ",vx_distance.item(),torch.sum(weight_h,dim=-1).mean().item())
+                        # print("PRI aug loss ",vx_distance.item(),torch.sum(weight_h,dim=-1).mean().item())
                     elif self.aug_net_training=='Adversarial':
                         x_,ax_,outx,outv,weight_h = self.get_features(x,mask='all_true')
                         meta_optimizer.zero_grad()
@@ -350,7 +355,7 @@ class AutoTCL:
                         aloss = vx_distance
                         aloss.backward()
                         meta_optimizer.step()
-                        print("Adversarial aug loss ",vx_distance.item(),reg_loss.item())
+                        # print("Adversarial aug loss ",vx_distance.item(),reg_loss.item())
 
                 self._net.train()
                 self.factor_augnet.eval()
@@ -362,7 +367,7 @@ class AutoTCL:
                 all_loss = loss + lcoal_weight * local_loss
                 all_loss.backward()
                 optimizer.step()
-                print("agree loss ", loss.item(), local_loss.item())
+                # print("agree loss ", loss.item(), local_loss.item())
 
                 self.net.update_parameters(self._net)
                     
@@ -372,9 +377,9 @@ class AutoTCL:
                 self.n_iters += 1
 
             self.n_epochs += 1
-
-            if self.n_epochs%self.eval_every_epoch==0:
-                print("epoch ",self.n_epochs)
+            print("epoch ", self.n_epochs)
+            if self.n_epochs%self.eval_every_epoch==0 and self.n_epochs > self.eval_start_epoch:
+                # print("epoch ",self.n_epochs)
                 if do_valid:
                     eval(evalall)
 

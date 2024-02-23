@@ -9,11 +9,11 @@ from models.augclass import *
 from config import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataset',type=str, default='ETTh2', help='The dataset name')
+parser.add_argument('--dataset',type=str, default='WTH', help='The dataset name') # ETTh1,ETTh2,ETTm1,Elec, WTH,Lora
 parser.add_argument('--load_default',type=bool, default=True, help='load default setting for dataset')
 parser.add_argument('--archive', type=str, default='forecast_csv_univar', help='forecast_csv_univar or forecast_csv -->univar or multivar')
 
-parser.add_argument('--gpu', type=int, default=0, help='The gpu no. used for training and inference')
+parser.add_argument('--gpu', type=int, default=2, help='The gpu no. used for training and inference')
 parser.add_argument('--seed', type=int, default=42, help='seed')
 parser.add_argument('--max_threads', type=int, default=12, help='threads')
 parser.add_argument('--eval', type=bool, default=True, help='do eval')
@@ -110,7 +110,8 @@ t = time.time()
 
 print("model")
 model = AutoTCL(
-    eval_every_epoch =1000,
+    eval_every_epoch =10,
+    eval_start_epoch =10,
     agu_channel = data.shape[-1],
     **config
 )
@@ -125,7 +126,8 @@ res = model.fit(train_data,
     ratio_step= args.ratio_step,
     lcoal_weight = args.local_weight,
     reg_weight = args.reg_weight,
-    regular_weight = args.regular_weight
+    regular_weight = args.regular_weight,
+    evalall =  True
     )
 
 mse, mae = res

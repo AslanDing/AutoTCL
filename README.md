@@ -1,6 +1,6 @@
-# This code is for the work of [AutoTCL](https://github.com/AI4TS/AI4TS.github.io/blob/main/CameraReadys%201-22%202/19%5CAI4TSAutoTCL%20(3).pdf) and PARAMETRIC AUGMENTATION FOR TIME SERIES CONTRASTIVE LEARNING
+# This code is for the work of [AutoTCL](https://github.com/AI4TS/AI4TS.github.io/blob/main/CameraReadys%201-22%202/19%5CAI4TSAutoTCL%20(3).pdf) and [Parametric Augmentation for Time Series Contrastive Learning](https://openreview.net/forum?id=EIPLdFy3vp)
 <p align="center">
-<img src="./figures/archect_1_.png" width = "700" alt="" align=center />
+<img src="./figures/AutoTCL.jpg" width = "700" alt="" align=center />
 <br><br>
 <b>Figure 1.</b> Overall framework of our work.
 </p>

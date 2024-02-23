@@ -78,7 +78,7 @@ def init_dl_program(
     device_name,
     seed=None,
     use_cudnn=True,
-    deterministic=False,
+    deterministic=True,
     benchmark=False,
     use_tf32=False,
     max_threads=None
@@ -131,7 +131,6 @@ def init_dl_program(
         
     return devices if len(devices) > 1 else devices[0]
 
-import numpy as np
 
 def plot2d(x, y, x2=None, y2=None, x3=None, y3=None, xlim=(-1, 1), ylim=(-1, 1), save_file=""):
     import matplotlib.pyplot as plt

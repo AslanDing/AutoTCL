@@ -83,8 +83,7 @@ def load_UCR(dataset,use_fft=False):
 
 
 def load_UEA(dataset):
-
-    if False: #f'{dataset}.pkl' in os.listdir(f'datasets/UEApkls/'):
+    if f'{dataset}.pkl' in os.listdir(f'datasets/UEApkls/'):
         with open(f'./datasets/UEApkls/{dataset}.pkl', 'rb') as fin:
             (train_X, train_y, test_X, test_y) = pickle.load(fin)
             return train_X, train_y, test_X, test_y
@@ -124,7 +123,7 @@ def load_forecast_npy(name, univar=False):
     data = np.load(f'datasets/{name}.npy')    
     if univar:
         data = data[: -1:]
-        
+
     train_slice = slice(None, int(0.6 * len(data)))
     valid_slice = slice(int(0.6 * len(data)), int(0.8 * len(data)))
     test_slice = slice(int(0.8 * len(data)), None)
@@ -148,12 +147,7 @@ def _get_time_features(dt):
     ], axis=1).astype(np.float32)
 
 def load_forecast_csv_lora(univar=False,path =r'datasets/lora/lora-all.csv' ):
-    # features = [
-    #     'hour', 'minute',
-    #     'gw1-env-temper',
-    #     'gw1-env-humidity',
-    # ]
-    # time_embedding_cols = features
+
     target_feature = [
         'gw1-lp-RSSI2',
         'gw1-lp-SNR2',
@@ -163,23 +157,17 @@ def load_forecast_csv_lora(univar=False,path =r'datasets/lora/lora-all.csv' ):
         'gw1-lp-PRR2',
         'gw2-lp-BER1',
         'gw2-lp-PRR1']
-    
-    # path = r'datasets/lora/lora-all.csv'
 
     data = pd.read_csv(path, index_col='time', parse_dates=True)
     dt_embed = _get_time_features(data.index)
-    # time_embeddings = [data[[col]].to_numpy() for col in time_embedding_cols]
-    # dt_embed = np.stack(time_embeddings,axis=1).astype(np.float32)
     if univar == True :
         forecast_cols = target_feature[:1]
     else:
         forecast_cols = target_feature
-    # feature
+
     feat = [data[[col]].to_numpy() for col in forecast_cols]
-    # feat = data[[forecast_col]].to_numpy()
     feat = np.stack(feat, axis=1).astype(np.float32).reshape([-1,len(forecast_cols)])
-    
-    # all_dt_embed = dt_embed
+
     data = feat
 
     train_slice = slice(None, int(0.6 * len(data)))
@@ -198,13 +186,14 @@ def load_forecast_csv_lora(univar=False,path =r'datasets/lora/lora-all.csv' ):
     all_data_feat = np.expand_dims(data, 0)
     data = np.concatenate([np.repeat(all_dt_embed, all_data_feat.shape[0], axis=0), all_data_feat], axis=-1)
 
-
     pred_lens = [24, 48, 168, 336, 720]
 
     return data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols
 
 
 def load_forecast_csv(name, univar=False):
+    # data_dir = f'~/data/AutoTCL/datasets/forecast/{name}.csv'
+    data = pd.read_csv(data_dir, index_col='date', parse_dates=True)
     data = pd.read_csv(f'datasets/forecast/{name}.csv', index_col='date', parse_dates=True)
     dt_embed = _get_time_features(data.index)
     n_covariate_cols = dt_embed.shape[-1]
@@ -248,7 +237,7 @@ def load_forecast_csv(name, univar=False):
     if name in ('ETTh1', 'ETTh2', 'WTH'):
         pred_lens = [24, 48, 168, 336, 720]
     elif name in ('electricity'):
-        pred_lens = [24, 48, 168, 336, 720]
+        pred_lens = [24, 48, 168, 336]
     else:
         pred_lens = [24, 48, 96, 288, 672]
         
