@@ -203,7 +203,7 @@ def load_forecast_csv(name, univar=False):
             data = data[['OT']]
         elif name == 'electricity':
             data = data[['MT_001']]
-        elif name =="WHT":
+        elif name =="WTH":
             data = data[['WetBulbCelsius']]
         else:
             data = data.iloc[:, -1:]

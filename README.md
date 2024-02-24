@@ -41,6 +41,7 @@ python train_forecasting_autotcl_cost.py
 
 --repr_dims <embedding_dim>
 --hidden_dims <hid_dim> 
+--aug_dim <aug_hid_dim> 
 --depth <encoder_layers> 
 --aug_depth <augument_layers> 
 
@@ -55,15 +56,25 @@ python train_forecasting_autotcl_cost.py
 --reg_weight <reg_weight_hx>
 --regular_weight <time_constraint_weight_hx>
 ```
-| args    | explanation                                    | type   |
-|---------|------------------------------------------------|--------|
-| dataset | dataset name                                   | string |
-|   gpu   | the number of GPU                              | int    |
-|   seed  | random seed                                    | int    |
-|   archive   | univar forecasting or multivar                 | string |
-|   load_default   | load pre-defined hyperparemeters               | bool   |
-|   batch-size   | the batch size of input                        | int    |
-|   lr   | learning rate for optimize the encoder network | float  | 
+| args    | explanation                                         | type   | options                                  | 
+|---------|-----------------------------------------------------|--------|------------------------------------------|
+| dataset | dataset name                                        | string | ETTh1/ETTh2/ETTm1/electricity/WTH        |
+|   gpu   | the number of GPU                                   | int    | -                                        |
+|   seed  | random seed                                         | int    | -                                        |
+|   archive   | univar forecasting or multivar                      | string | forecast_csv_univar/forecast_csv         |
+|   load_default   | load pre-defined hyperparemeters                    | bool   | True/False                               |
+|   batch-size   | the batch size of input                             | int    | -                                        |
+|   lr   | learning rate for optimize the encoder network      | float  | -                                        |
+|   meta_lr   | learning rate for optimize the augumentation network | float  | -                                        | 
+|   mask_mode   | how to add noise for optimize the encoder network   | string | continuous/mask_last/all_true/all_false/binomial |
+|   augmask_mode   | how to add noise for optimize the augumentation network | string | continuous/mask_last/all_true/all_false/binomial |
+|   repr_dims   | embedding dimension of the encoder network          | int    | -                                        |
+|   hidden_dims   | hidden dimension of the encoder network             | int    | -                                        |
+|   aug_dim   | hidden dimension of the augument network            | int    | -                                        |
+|   depth   | NN layers of the encoder network                    | int    | -                                        |
+|   aug_depth   | NN layers of the augment network                    | int    | -                                        |
+|   max_train_length   | input time length                                   | int    | -                                        |
+
 
 
 ## Main Results
