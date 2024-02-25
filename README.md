@@ -48,32 +48,40 @@ python train_forecasting_autotcl_cost.py
 --max_train_length <input_time_length> 
 --epochs <training_epoch> 
 --gumbel_bias <gum_bias>
+--gamma_zeta <zeta_in_gumbel>
 --ratio_step <ratio_update_between_encoder_augument> 
 --hard_mask <hard_gumbel>
---gamma_zeta <zeta_in_gumbel>
 
 --local_weight <local_infonce_encoder>
 --reg_weight <reg_weight_hx>
 --regular_weight <time_constraint_weight_hx>
 ```
-| args    | explanation                                         | type   | options                                  | 
-|---------|-----------------------------------------------------|--------|------------------------------------------|
-| dataset | dataset name                                        | string | ETTh1/ETTh2/ETTm1/electricity/WTH        |
-|   gpu   | the number of GPU                                   | int    | -                                        |
-|   seed  | random seed                                         | int    | -                                        |
-|   archive   | univar forecasting or multivar                      | string | forecast_csv_univar/forecast_csv         |
-|   load_default   | load pre-defined hyperparemeters                    | bool   | True/False                               |
-|   batch-size   | the batch size of input                             | int    | -                                        |
-|   lr   | learning rate for optimize the encoder network      | float  | -                                        |
-|   meta_lr   | learning rate for optimize the augumentation network | float  | -                                        | 
-|   mask_mode   | how to add noise for optimize the encoder network   | string | continuous/mask_last/all_true/all_false/binomial |
-|   augmask_mode   | how to add noise for optimize the augumentation network | string | continuous/mask_last/all_true/all_false/binomial |
-|   repr_dims   | embedding dimension of the encoder network          | int    | -                                        |
-|   hidden_dims   | hidden dimension of the encoder network             | int    | -                                        |
-|   aug_dim   | hidden dimension of the augument network            | int    | -                                        |
-|   depth   | NN layers of the encoder network                    | int    | -                                        |
-|   aug_depth   | NN layers of the augment network                    | int    | -                                        |
-|   max_train_length   | input time length                                   | int    | -                                        |
+| args             | explanation                                                                                                       | type   | options                                          | 
+|------------------|-------------------------------------------------------------------------------------------------------------------|--------|--------------------------------------------------|
+| dataset          | dataset name                                                                                                      | string | ETTh1/ETTh2/ETTm1/electricity/WTH                |
+| gpu              | the number of GPU                                                                                                 | int    | -                                                |
+| seed             | random seed                                                                                                       | int    | -                                                |
+| archive          | univar forecasting or multivar                                                                                    | string | forecast_csv_univar/forecast_csv                 |
+| load_default     | load pre-defined hyperparemeters                                                                                  | bool   | True/False                                       |
+| batch-size       | the batch size of input                                                                                           | int    | -                                                |
+| lr               | learning rate for optimize the encoder network                                                                    | float  | -                                                |
+| meta_lr          | learning rate for optimize the augumentation network                                                              | float  | -                                                | 
+| mask_mode        | how to add noise for optimize the encoder network                                                                 | string | continuous/mask_last/all_true/all_false/binomial |
+| augmask_mode     | how to add noise for optimize the augumentation network                                                           | string | continuous/mask_last/all_true/all_false/binomial |
+| repr_dims        | embedding dimension of the encoder network                                                                        | int    | -                                                |
+| hidden_dims      | hidden dimension of the encoder network                                                                           | int    | -                                                |
+| aug_dim          | hidden dimension of the augument network                                                                          | int    | -                                                |
+| depth            | NN layers of the encoder network                                                                                  | int    | -                                                |
+| aug_depth        | NN layers of the augment network                                                                                  | int    | -                                                |
+| max_train_length | input time length                                                                                                 | int    | -                                                |
+| epochs           | training epochs                                                                                                   | int    | -                                                |
+| gumbel_bias      | bias for gumble softmax                                                                                           | float  | -                                                |
+| gumbel_zeta      | zeta for gumble softmax                                                                                           | float  | -                                                |
+| ratio_step      | the ratio of encoder optimize : augument network optimize                                                         | int    | -                                                |
+| hard_mask      | h(x) is hard(binary) or soft                                                                                      | bool    | True/False                                       |
+| local_weight      | weight of local infoNCE loss introduced by [InfoTS](https://ojs.aaai.org/index.php/AAAI/article/view/25575/25347) | float    | -                                                |
+| reg_weight      | weight of the regularization of h(x)                                                                              | bool    | True/False                                       |
+| regular_weight      | weight of the time constraint of h(x)                                                                             | bool    | True/False                                       |
 
 
 
