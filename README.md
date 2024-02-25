@@ -14,7 +14,7 @@ encoders.
 
 
 ## Requirements
-We use python 3.9.16, the packages main contain numpy, scikit-learn, torch, tqdm, matplotlib, pandas. We also provide a 
+We use python 3.9, the packages main contain numpy, scikit-learn, torch, tqdm, matplotlib, pandas. We also provide a 
 requirements.txt(contains some other irrelevant packages).
 
 ## dataset
@@ -80,8 +80,8 @@ python train_forecasting_autotcl_cost.py
 | ratio_step      | the ratio of encoder optimize : augument network optimize                                                         | int    | -                                                |
 | hard_mask      | h(x) is hard(binary) or soft                                                                                      | bool    | True/False                                       |
 | local_weight      | weight of local infoNCE loss introduced by [InfoTS](https://ojs.aaai.org/index.php/AAAI/article/view/25575/25347) | float    | -                                                |
-| reg_weight      | weight of the regularization of h(x)                                                                              | bool    | True/False                                       |
-| regular_weight      | weight of the time constraint of h(x)                                                                             | bool    | True/False                                       |
+| reg_weight      | weight of the regularization of h(x)                                                                              | float    | -                                                |
+| regular_weight      | weight of the time constraint of h(x)                                                                             | float    | -                                                |
 
 
 
