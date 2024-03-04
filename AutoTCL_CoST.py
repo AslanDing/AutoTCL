@@ -8,8 +8,6 @@ from sklearn.metrics import log_loss
 import tasks
 from models.basicaug import *
 LAEGE_NUM = 1e7
-import nni
-from einops import rearrange, repeat, reduce
 
 class AutoTCL:
     '''The AutoTCL model'''
