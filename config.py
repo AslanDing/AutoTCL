@@ -65,13 +65,13 @@ config_elec = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'con
                     'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 200}
 
 
-# todo: to be updated
-config_WTH_uni = {'batch_size': 64, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'mask_last',
-                    'augmask_mode': 'continuous', 'bias_init': 0.90, 'local_weight': 0.1,
-                    'reg_weight': 0.1, 'regular_weight': 0.1, 'dropout': 0.1,
+
+config_WTH_uni = {'batch_size': 256, 'lr': 3e-03, 'meta_lr': 0.01, 'mask_mode': 'all_True',
+                    'augmask_mode': 'binomial', 'bias_init': 0.1, 'local_weight': 0.0003,
+                    'reg_weight': 0.03, 'regular_weight': 0.0003, 'dropout': 0.1,
                     'augdropout': 0.1, 'hidden_dims': 128, 'max_train_length': 256,
-                    'depth': 7, 'aug_depth': 1, 'gamma_zeta': 0.5, 'aug_dim': 64,'seed':42,
-                    'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 480}
+                    'depth': 8, 'aug_depth': 1, 'gamma_zeta': 0.499, 'aug_dim': 8,'seed':42,
+                    'ratio_step': 1, 'gumbel_bias': 0.0006, 'hard_mask': True, 'epochs': 20}
 
 
 # todo: to be updated
