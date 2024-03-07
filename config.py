@@ -74,13 +74,12 @@ config_WTH_uni = {'batch_size': 256, 'lr': 3e-03, 'meta_lr': 0.01, 'mask_mode': 
                     'ratio_step': 1, 'gumbel_bias': 0.0006, 'hard_mask': True, 'epochs': 20}
 
 
-# todo: to be updated
-config_WTH = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'continuous',
-                    'augmask_mode': 'mask_last', 'bias_init': 0.90, 'local_weight': 0.1,
-                    'reg_weight': 0.1, 'regular_weight': 0, 'dropout': 0.3,
-                    'augdropout': 0.2, 'hidden_dims': 128, 'max_train_length': 512,
-                    'depth': 9, 'aug_depth': 2, 'gamma_zeta': 0.02, 'aug_dim': 16,'seed':42,
-                    'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 100}
+config_WTH = {'batch_size': 64, 'lr': 0.003, 'meta_lr': 0.000001, 'mask_mode': 'binomial',
+                    'augmask_mode': 'binomial', 'bias_init': 0.3, 'local_weight': 0.1,
+                    'reg_weight': 0.0003, 'regular_weight': 0.3, 'dropout': 0.3,
+                    'augdropout': 0.2, 'hidden_dims': 16, 'max_train_length': 512,
+                    'depth': 6, 'aug_depth': 2, 'gamma_zeta': 0.0009, 'aug_dim': 256,'seed':42,
+                    'ratio_step': 32, 'gumbel_bias': 0.001, 'hard_mask': False, 'epochs': 20}
 
 
 
