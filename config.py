@@ -40,13 +40,13 @@ config_ettm1_uni = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode':
                     'depth': 9, 'aug_depth': 1, 'gamma_zeta': 0.02, 'aug_dim': 16,'seed':42,
                     'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 190}
 
-# todo: to be updated
-config_ettm1 = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'continuous',
-                    'augmask_mode': 'mask_last', 'bias_init': 0.90, 'local_weight': 0.1,
-                    'reg_weight': 0.1, 'regular_weight': 0, 'dropout': 0.2,
-                    'augdropout': 0.2, 'hidden_dims': 128, 'max_train_length': 512,
-                    'depth': 9, 'aug_depth': 1, 'gamma_zeta': 0.02, 'aug_dim': 16,'seed':42,
-                    'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 300}
+
+config_ettm1 = {'batch_size': 128, 'lr': 0.0001, 'meta_lr': 0.000003, 'mask_mode': 'continuous', # binomial,binomial
+                    'augmask_mode': 'all_true', 'bias_init': 0.6, 'local_weight': 0.001,
+                    'reg_weight': 0.000001, 'regular_weight': 0.00003, 'dropout': 0.3,
+                    'augdropout': 0.1, 'hidden_dims': 32, 'max_train_length': 1024,
+                    'depth': 10, 'aug_depth': 1, 'gamma_zeta': 0.0006, 'aug_dim': 128,'seed':42,
+                    'ratio_step': 2, 'gumbel_bias': 0.2, 'hard_mask': False, 'epochs': 420}
 
 
 config_elec_uni = {'batch_size': 64, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'continuous',
