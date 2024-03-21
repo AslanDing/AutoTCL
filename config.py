@@ -22,13 +22,12 @@ config_etth2_uni = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode':
                     'depth': 9, 'aug_depth': 2, 'gamma_zeta': 0.02, 'aug_dim': 16,'seed':42,
                     'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 80}
 
-# todo: to be updated
-config_etth2 = {'batch_size': 32, 'lr': 0.9e-05, 'meta_lr': 0.008, 'mask_mode': 'binomial',
-                    'augmask_mode': 'continuous', 'bias_init': 0.90, 'local_weight': 0.1,
-                    'reg_weight': 0.2, 'regular_weight': 0.0, 'dropout': 0.3,
-                    'augdropout': 0.1, 'hidden_dims': 128, 'max_train_length': 256,
-                    'depth': 9, 'aug_depth': 2, 'gamma_zeta': 0.02, 'aug_dim': 16,'seed':42,
-                    'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': True, 'epochs': 200}
+config_etth2 = {'batch_size': 64, 'lr': 0.00003, 'meta_lr': 0.1, 'mask_mode': 'continuous',
+                    'augmask_mode': 'continuous', 'bias_init': 0.90, 'local_weight': 0.000001,
+                    'reg_weight': 0.0, 'regular_weight': 0.000001, 'dropout': 0.3,
+                    'augdropout': 0.1, 'hidden_dims': 8, 'max_train_length': 256,
+                    'depth': 9, 'aug_depth': 5, 'gamma_zeta': 0.0009, 'aug_dim': 8,'seed':42,
+                    'ratio_step': 1, 'gumbel_bias': 0.01, 'hard_mask': False, 'epochs': 15}
 
 
 
