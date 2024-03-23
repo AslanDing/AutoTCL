@@ -10,8 +10,6 @@ which can be adaptively employed to support time series representation learning.
 The proposed approach is [encoder-agnostic](), allowing it to be seamlessly integrated with different backbone
 encoders.
 
-## It is an early version, the final version will be coming soon.
-
 
 ## Requirements
 We use python 3.9, the packages main contain numpy, scikit-learn, torch, tqdm, matplotlib, pandas. We also provide a 
@@ -42,7 +40,6 @@ python train_forecasting_autotcl_cost.py
 --repr_dims <embedding_dim>
 --hidden_dims <hid_dim> 
 --aug_dim <aug_hid_dim> 
---depth <encoder_layers> 
 --aug_depth <augument_layers> 
 
 --max_train_length <input_time_length> 
@@ -70,8 +67,7 @@ python train_forecasting_autotcl_cost.py
 | augmask_mode     | how to add noise for optimize the augumentation network                                                           | string | continuous/mask_last/all_true/all_false/binomial |
 | repr_dims        | embedding dimension of the encoder network                                                                        | int    | -                                                |
 | hidden_dims      | hidden dimension of the encoder network                                                                           | int    | -                                                |
-| aug_dim          | hidden dimension of the augument network                                                                          | int    | -                                                |
-| depth            | NN layers of the encoder network                                                                                  | int    | -                                                |
+| aug_dim          | hidden dimension of the augument network                                                                          | int    | -                                                |-                                                |
 | aug_depth        | NN layers of the augment network                                                                                  | int    | -                                                |
 | max_train_length | input time length                                                                                                 | int    | -                                                |
 | epochs           | training epochs                                                                                                   | int    | -                                                |

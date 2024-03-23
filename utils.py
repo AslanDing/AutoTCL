@@ -78,7 +78,7 @@ def init_dl_program(
     device_name,
     seed=None,
     use_cudnn=True,
-    deterministic=True,
+    deterministic=False,
     benchmark=False,
     use_tf32=False,
     max_threads=None

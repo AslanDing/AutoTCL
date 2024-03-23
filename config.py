@@ -1,10 +1,15 @@
+# these paramer are test under torch.backends.cudnn.deterministic=True,
+# however, this setting will cause running slow
+# for config_elec, the results are test under deterministic=False
+
+# 
 config_etth1_uni = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.012, 'mask_mode': 'mask_last',
                     'augmask_mode': 'mask_last', 'bias_init': 0.90, 'local_weight': 0.3,
                     'reg_weight': 0.003, 'regular_weight': 0, 'dropout': 0.1,
                     'augdropout': 0.1, 'hidden_dims': 64, 'max_train_length': 257,
                     'depth': 10, 'aug_depth': 1, 'gamma_zeta': 0.05, 'aug_dim': 16,'seed':42,
                     'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': True, 'epochs': 100}
-
+# avg. total 1.2429398576236532 avg. 0.6555039071646586 0.5874359504589945
 config_etth1 = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.012, 'mask_mode': 'mask_last',
                     'augmask_mode': 'mask_last', 'bias_init': 0.90, 'local_weight': 0.3,
                     'reg_weight': 0.2, 'regular_weight': 0, 'dropout': 0.1,
@@ -14,14 +19,14 @@ config_etth1 = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.012, 'mask_mode': 'm
 
 
 
-
+# avg. total 0.465516948684493   avg. 0.16127922624228738 0.30423772244220565
 config_etth2_uni = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'continuous',
                     'augmask_mode': 'mask_last', 'bias_init': 0.90, 'local_weight': 0.1,
                     'reg_weight': 0.1, 'regular_weight': 0, 'dropout': 0.3,
                     'augdropout': 0.2, 'hidden_dims': 128, 'max_train_length': 512,
                     'depth': 9, 'aug_depth': 2, 'gamma_zeta': 0.02, 'aug_dim': 16,'seed':42,
                     'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 80}
-
+# avg. total 2.0639568490668982   avg. 1.239253840047174 0.8247030090197244
 config_etth2 = {'batch_size': 64, 'lr': 0.00003, 'meta_lr': 0.1, 'mask_mode': 'continuous',
                     'augmask_mode': 'continuous', 'bias_init': 0.90, 'local_weight': 0.000001,
                     'reg_weight': 0.0, 'regular_weight': 0.000001, 'dropout': 0.3,
@@ -31,30 +36,28 @@ config_etth2 = {'batch_size': 64, 'lr': 0.00003, 'meta_lr': 0.1, 'mask_mode': 'c
 
 
 
-
+# avg. total 0.20306313270058415 avg. 0.04760412978270486 0.15545900291787929
 config_ettm1_uni = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'continuous',
                     'augmask_mode': 'mask_last', 'bias_init': 0.90, 'local_weight': 0.1,
                     'reg_weight': 0.1, 'regular_weight': 0, 'dropout': 0.2,
                     'augdropout': 0.2, 'hidden_dims': 128, 'max_train_length': 512,
                     'depth': 9, 'aug_depth': 1, 'gamma_zeta': 0.02, 'aug_dim': 16,'seed':42,
                     'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 190}
-
-
-config_ettm1 = {'batch_size': 128, 'lr': 0.0001, 'meta_lr': 0.000003, 'mask_mode': 'continuous', # binomial,binomial
+# avg. total 0.9002543626158892 avg. 0.4405296853946844 0.45972467722120475
+config_ettm1 = {'batch_size': 128, 'lr': 0.0001, 'meta_lr': 0.000003, 'mask_mode': 'continuous', 
                     'augmask_mode': 'all_true', 'bias_init': 0.6, 'local_weight': 0.001,
                     'reg_weight': 0.000001, 'regular_weight': 0.00003, 'dropout': 0.3,
                     'augdropout': 0.1, 'hidden_dims': 32, 'max_train_length': 1024,
                     'depth': 10, 'aug_depth': 1, 'gamma_zeta': 0.0006, 'aug_dim': 128,'seed':42,
                     'ratio_step': 2, 'gumbel_bias': 0.2, 'hard_mask': False, 'epochs': 420}
 
-
+# avg. total 0.7152480190155328 avg. 0.3687407123505206 0.3465073066650122
 config_elec_uni = {'batch_size': 64, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'continuous',
                     'augmask_mode': 'binomial', 'bias_init': 0.90, 'local_weight': 0.1,
                     'reg_weight': 0.1, 'regular_weight': 0, 'dropout': 0.3,
                     'augdropout': 0.2, 'hidden_dims': 128, 'max_train_length': 257,
                     'depth': 9, 'aug_depth': 2, 'gamma_zeta': 0.02, 'aug_dim': 16,'seed':42,
                     'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 110}
-
 # todo: to be updated
 config_elec = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'continuous',
                     'augmask_mode': 'mask_last', 'bias_init': 0.90, 'local_weight': 0.1,
@@ -64,15 +67,14 @@ config_elec = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'con
                     'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 200}
 
 
-
+# avg. total 0.4474360587106554  avg.  0.15990516940715715 0.28753088930349824
 config_WTH_uni = {'batch_size': 256, 'lr': 3e-03, 'meta_lr': 0.01, 'mask_mode': 'all_True',
                     'augmask_mode': 'binomial', 'bias_init': 0.1, 'local_weight': 0.0003,
                     'reg_weight': 0.03, 'regular_weight': 0.0003, 'dropout': 0.1,
                     'augdropout': 0.1, 'hidden_dims': 128, 'max_train_length': 256,
                     'depth': 8, 'aug_depth': 1, 'gamma_zeta': 0.499, 'aug_dim': 8,'seed':42,
                     'ratio_step': 1, 'gumbel_bias': 0.0006, 'hard_mask': True, 'epochs': 20}
-
-
+# avg. total 0.8784346657087241  avg.  0.4220096324938378 0.45642503321488626
 config_WTH = {'batch_size': 64, 'lr': 0.003, 'meta_lr': 0.000001, 'mask_mode': 'binomial',
                     'augmask_mode': 'binomial', 'bias_init': 0.3, 'local_weight': 0.1,
                     'reg_weight': 0.0003, 'regular_weight': 0.3, 'dropout': 0.3,
