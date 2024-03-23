@@ -1,14 +1,10 @@
-# these paramer are test under torch.backends.cudnn.deterministic=True,
-# however, this setting will cause running slow
-# for config_elec, the results are test under deterministic=False
-
-# 
-config_etth1_uni = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.012, 'mask_mode': 'mask_last',
+# avg. total 0.29322260671979516 avg. 0.08016602406984738 0.21305658264994776  
+config_etth1_uni = {'batch_size': 32, 'lr': 3e-05, 'meta_lr': 0.01, 'mask_mode': 'mask_last',
                     'augmask_mode': 'mask_last', 'bias_init': 0.90, 'local_weight': 0.3,
                     'reg_weight': 0.003, 'regular_weight': 0, 'dropout': 0.1,
                     'augdropout': 0.1, 'hidden_dims': 64, 'max_train_length': 257,
                     'depth': 10, 'aug_depth': 1, 'gamma_zeta': 0.05, 'aug_dim': 16,'seed':42,
-                    'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': True, 'epochs': 100}
+                    'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': True, 'epochs': 115}
 # avg. total 1.2429398576236532 avg. 0.6555039071646586 0.5874359504589945
 config_etth1 = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.012, 'mask_mode': 'mask_last',
                     'augmask_mode': 'mask_last', 'bias_init': 0.90, 'local_weight': 0.3,
