@@ -54,13 +54,13 @@ config_elec_uni = {'batch_size': 64, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 
                     'augdropout': 0.2, 'hidden_dims': 128, 'max_train_length': 257,
                     'depth': 9, 'aug_depth': 2, 'gamma_zeta': 0.02, 'aug_dim': 16,'seed':42,
                     'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 110}
-# todo: to be updated
-config_elec = {'batch_size': 32, 'lr': 1e-05, 'meta_lr': 0.01, 'mask_mode': 'continuous',
-                    'augmask_mode': 'mask_last', 'bias_init': 0.90, 'local_weight': 0.1,
-                    'reg_weight': 0.1, 'regular_weight': 0, 'dropout': 0.3,
-                    'augdropout': 0.2, 'hidden_dims': 128, 'max_train_length': 257,
-                    'depth': 9, 'aug_depth': 2, 'gamma_zeta': 0.02, 'aug_dim': 16,'seed':42,
-                    'ratio_step': 1, 'gumbel_bias': 0.05, 'hard_mask': False, 'epochs': 200}
+# avg. total 0.45921119911843 avg. 0.18041042989253253 0.27880076922589747
+config_elec = {'batch_size': 128, 'lr': 1e-06, 'meta_lr': 0.001, 'mask_mode': 'mask_last',
+                    'augmask_mode': 'continuous', 'bias_init': 0.03, 'local_weight': 3e-6,
+                    'reg_weight': 0.0001, 'regular_weight': 0.01, 'dropout': 0.3,
+                    'augdropout': 0.2, 'hidden_dims': 32, 'max_train_length': 256,
+                    'depth': 9, 'aug_depth': 1, 'gamma_zeta': 0.0006, 'aug_dim': 256,'seed':40,
+                    'ratio_step': 8, 'gumbel_bias': 0.1, 'hard_mask': True, 'epochs': 10}
 
 
 # avg. total 0.4474360587106554  avg.  0.15990516940715715 0.28753088930349824
